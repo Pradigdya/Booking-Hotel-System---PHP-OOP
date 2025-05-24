@@ -62,85 +62,68 @@ class ProsesPenyewa extends Penyewa
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
 
 
-    <div class="sidebar">
-        <h5 class="mb-4 text-primary">Booking Hotel</h5>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="page1.php"><i class="bi bi-person me-2"></i> Penyewa</a>
-            <a class="nav-link" href="page2.php"><i class="bi bi-house-door me-2"></i> Tipe Kamar</a>
-            <a class="nav-link" href="page3.php"><i class="bi bi-person me-2"></i> Tamu</a>
-            <a class="nav-link" href="page4.php"><i class="bi bi-wallet2 me-2"></i> Pembayaran</a>
-            <hr />
-            <a class="nav-link" href="rekap.php"><i class="bi bi-journal me-2"></i> Rekap</a>
-
-        </nav>
-    </div>
 
 
-    <nav class="navbar d-flex justify-content-end">
-        <span class="fw-semibold text-secondary">Pradigdya Rafly</span>
-    </nav>
+
+<div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">
+
+    <h1 class="mb-3">FORM PENYEWA</h1>
+    <p>by admin</p>
+    <form method="POST" class="bg-white p-4 rounded shadow mb-4" style="width: 100%; max-width: 500px;">
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Nama</label>
+            <input type="text" class="form-control" name="631_nama" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Umur</label>
+            <input type="number" class="form-control" name="631_umur" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Alamat</label>
+            <input type="text" class="form-control" name="631_alamat" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Nomor Telephone</label>
+            <input type="text" class="form-control" name="631_nomor" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Identitas Diri</label>
+            <select class="form-control" name="631_identitas" required>
+                <option value="">-- Pilih Identitas --</option>
+                <option value="KTP">KTP</option>
+                <option value="SIM">SIM</option>
+            </select>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
 
 
-    <div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">
+    <?php
+    include 'data.php';
+    session_start();
 
-        <h1 class="mb-3">FORM PENYEWA</h1>
-        <p>by admin</p>
-        <form method="POST" class="bg-white p-4 rounded shadow mb-4" style="width: 100%; max-width: 500px;">
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Nama</label>
-                <input type="text" class="form-control" name="631_nama" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Umur</label>
-                <input type="number" class="form-control" name="631_umur" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Alamat</label>
-                <input type="text" class="form-control" name="631_alamat" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Nomor Telephone</label>
-                <input type="text" class="form-control" name="631_nomor" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Identitas Diri</label>
-                <select class="form-control" name="631_identitas" required>
-                    <option value="">-- Pilih Identitas --</option>
-                    <option value="KTP">KTP</option>
-                    <option value="SIM">SIM</option>
-                </select>
-            </div>
-            <button type="submit" name="submit" class="btn btn-primary w-100">Submit</button>
-        </form>
+    if (!isset($_SESSION['form1'])) {
+        $_SESSION['form1'] = new FormDataDiri();
+    }
+
+    if ($_POST) {
+        $_SESSION['form1']->simpan(
+            $_POST['631_nama'],
+            $_POST['631_umur'],
+            $_POST['631_alamat'],
+            $_POST['631_nomor'],
+            $_POST['631_identitas']
+        );
+        echo "<p>Data penyewa disimpan!</p>";
+    }
+    ?>
 
 
-        <?php
-        include 'data.php';
-        session_start();
+</div>
 
-        if (!isset($_SESSION['form1'])) {
-            $_SESSION['form1'] = new FormDataDiri();
-        }
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
-        if ($_POST) {
-            $_SESSION['form1']->simpan(
-                $_POST['631_nama'],
-                $_POST['631_umur'],
-                $_POST['631_alamat'],
-                $_POST['631_nomor'],
-                $_POST['631_identitas']
-            );
-            echo "<p>Data penyewa disimpan!</p>";
-        }
-        ?>
-
-
-    </div>
-
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
 
 </html>

@@ -62,91 +62,73 @@ class DetailKamar extends Kamar
     <link rel="stylesheet" href="style.css">
 </head>
 
-<body>
-
-    <!-- Sidebar -->
-    <div class="sidebar">
-        <h5 class="mb-4 text-primary">Booking Hotel</h5>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="page1.php"><i class="bi bi-person me-2"></i> Penyewa</a>
-            <a class="nav-link" href="page2.php"><i class="bi bi-house-door me-2"></i> Tipe Kamar</a>
-            <a class="nav-link" href="page3.php"><i class="bi bi-person me-2"></i> Tamu</a>
-            <a class="nav-link" href="page4.php"><i class="bi bi-wallet2 me-2"></i> Pembayaran</a>
-            <hr />
-            <a class="nav-link" href="rekap.php"><i class="bi bi-journal me-2"></i> Rekap</a>
-
-        </nav>
-    </div>
 
 
-    <nav class="navbar d-flex justify-content-end">
-        <span class="fw-semibold text-secondary">Ilham Andre</span>
-    </nav>
 
 
-    <div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">
+<div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">
 
-        <h1 class="mb-3">TIPE KAMAR</h1>
-        <form method="POST" class="bg-white p-4 rounded shadow mb-4" style="width: 100%; max-width: 500px;">
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Tipe</label>
-                <select class="form-control" name="634_tipekamar" required>
-                    <option value="">-- Tipe Kamar --</option>
-                    <option value="Bronze">Bronze</option>
-                    <option value="Silver">Silver</option>
-                    <option value="Gold">Gold</option>
-                    <option value="Platinum">Platinum</option>
-                </select>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Jumlah Kamar</label>
-                <input type="number" class="form-control" name="634_jumlahkamar" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Checkin</label>
-                <input type="date" class="form-control" name="634_checkin" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Checkout</label>
-                <input type="date" class="form-control" name="634_checkout" required>
-            </div>
-            <div class="mb-3">
-                <label class="form-label fw-semibold text-secondary">Pembayaran</label>
-                <select class="form-control" name="634_pembayaran" required>
-                    <option value="">-- Pembayaran --</option>
-                    <option value="Cash">Cash</option>
-                    <option value="Non-Tunai">Non-Tunai</option>
+    <h1 class="mb-3">TIPE KAMAR</h1>
+    <form method="POST" class="bg-white p-4 rounded shadow mb-4" style="width: 100%; max-width: 500px;">
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Tipe</label>
+            <select class="form-control" name="634_tipekamar" required>
+                <option value="">-- Tipe Kamar --</option>
+                <option value="Bronze">Bronze</option>
+                <option value="Silver">Silver</option>
+                <option value="Gold">Gold</option>
+                <option value="Platinum">Platinum</option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Jumlah Kamar</label>
+            <input type="number" class="form-control" name="634_jumlahkamar" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Checkin</label>
+            <input type="date" class="form-control" name="634_checkin" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Checkout</label>
+            <input type="date" class="form-control" name="634_checkout" required>
+        </div>
+        <div class="mb-3">
+            <label class="form-label fw-semibold text-secondary">Pembayaran</label>
+            <select class="form-control" name="634_pembayaran" required>
+                <option value="">-- Pembayaran --</option>
+                <option value="Cash">Cash</option>
+                <option value="Non-Tunai">Non-Tunai</option>
 
-                </select>
-            </div>
-            <button type="submit" name="submit" class="btn btn-primary w-100">Submit</button>
-        </form>
-
-
-        <?php
-        include 'data.php';
-        session_start();
-
-        if (!isset($_SESSION['form2'])) {
-            $_SESSION['form2'] = new FormBooking();
-        }
-
-        if ($_POST) {
-            $_SESSION['form2']->simpan(
-                $_POST['634_tipekamar'],
-                $_POST['634_jumlahkamar'],
-                $_POST['634_checkin'],
-                $_POST['634_checkout'],
-                $_POST['634_pembayaran']
-            );
-            echo "<p>Data booking kamar disimpan!</p>";
-        }
-        ?>
+            </select>
+        </div>
+        <button type="submit" name="submit" class="btn btn-primary w-100">Submit</button>
+    </form>
 
 
-    </div>
+    <?php
+    include 'data.php';
+    session_start();
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-</body>
+    if (!isset($_SESSION['form2'])) {
+        $_SESSION['form2'] = new FormBooking();
+    }
+
+    if ($_POST) {
+        $_SESSION['form2']->simpan(
+            $_POST['634_tipekamar'],
+            $_POST['634_jumlahkamar'],
+            $_POST['634_checkin'],
+            $_POST['634_checkout'],
+            $_POST['634_pembayaran']
+        );
+        echo "<p>Data booking kamar disimpan!</p>";
+    }
+    ?>
+
+
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 
 </html>

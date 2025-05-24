@@ -13,24 +13,10 @@
 <body>
 
 
-    <div class="sidebar">
-        <h5 class="mb-4 text-primary">Booking Hotel</h5>
-        <nav class="nav flex-column">
-            <a class="nav-link" href="page1.php"><i class="bi bi-person me-2"></i> Penyewa</a>
-            <a class="nav-link" href="page2.php"><i class="bi bi-house-door me-2"></i> Tipe Kamar</a>
-            <a class="nav-link" href="page3.php"><i class="bi bi-person me-2"></i> Tamu</a>
-            <a class="nav-link" href="page4.php"><i class="bi bi-wallet2 me-2"></i> Pembayaran</a>
-            <hr />
-            <a class="nav-link" href="rekap.php"><i class="bi bi-journal me-2"></i> Rekap</a>
 
 
-        </nav>
-    </div>
 
 
-    <nav class="navbar d-flex justify-content-end">
-        <span class="fw-semibold text-secondary">Rekap Data</span>
-    </nav>
 
 
     <div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">

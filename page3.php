@@ -114,21 +114,13 @@ class DetailTamu extends Tamu
 
     <?php
     include 'data.php';
-    session_start();
-
-    if (!isset($_SESSION['form3'])) {
-        $_SESSION['form3'] = new FormPreferensi();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
 
-    if ($_POST) {
-        $_SESSION['form3']->simpan(
-            $_POST['638_namatamu'],
-            $_POST['638_umurtamu'],
-            $_POST['638_hubungan'],
-            $_POST['638_kelamin'],
-            $_POST['638_identitas']
-        );
-        echo "<p>Data tamu tambahan disimpan!</p>";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $form = new FormPreferensi();
+        $form->simpan($_POST['638_namatamu'], $_POST['638_umurtamu'], $_POST['638_hubungan'], $_POST['638_kelamin'], $_POST['638_identitas']);
     }
     ?>
 

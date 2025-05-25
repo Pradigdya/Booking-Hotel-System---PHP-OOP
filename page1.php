@@ -70,7 +70,7 @@ class ProsesPenyewa extends Penyewa
 <div class="content d-flex flex-column align-items-center pt-5" style="margin-left: 220px;">
 
     <h1 class="mb-3">FORM PENYEWA</h1>
-    <p>by admin</p>
+
     <form method="POST" class="bg-white p-4 rounded shadow mb-4" style="width: 100%; max-width: 500px;">
         <div class="mb-3">
             <label class="form-label fw-semibold text-secondary">Nama</label>
@@ -102,21 +102,19 @@ class ProsesPenyewa extends Penyewa
 
     <?php
     include 'data.php';
-    session_start();
-
-    if (!isset($_SESSION['form1'])) {
-        $_SESSION['form1'] = new FormDataDiri();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
 
-    if ($_POST) {
-        $_SESSION['form1']->simpan(
+    if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+        $form = new FormDataDiri();
+        $form->simpan(
             $_POST['631_nama'],
             $_POST['631_umur'],
             $_POST['631_alamat'],
             $_POST['631_nomor'],
             $_POST['631_identitas']
         );
-        echo "<p>Data penyewa disimpan!</p>";
     }
     ?>
 

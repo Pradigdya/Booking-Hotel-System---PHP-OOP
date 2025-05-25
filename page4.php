@@ -104,21 +104,17 @@ class DetailPembayaran extends Pembayaran
 
     <?php
     include 'data.php';
-    session_start();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
+    }
 
     if (!isset($_SESSION['form4'])) {
         $_SESSION['form4'] = new FormPembayaran();
     }
 
-    if ($_POST) {
-        $_SESSION['form4']->simpan(
-            $_POST['626_kartu'],
-            $_POST['626_nama'],
-            $_POST['626_pembayaran'],
-            $_POST['626_jumlahbayar'],
-            $_POST['626_tanggalbayar']
-        );
-        echo "<p>Data pembayaran disimpan!</p>";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $form = new FormPembayaran();
+        $form->simpan($_POST['626_kartu'], $_POST['626_nama'], $_POST['626_pembayaran'], $_POST['626_jumlahbayar'], $_POST['626_tanggalbayar']);
     }
     ?>
 

@@ -1,16 +1,20 @@
 <?php
+session_start();
+
 class FormBase
 {
-    protected $data = [];
-
     protected function tambahData($input)
     {
-        array_push($this->data, $input);
+        if (!isset($_SESSION['data'])) {
+            $_SESSION['data'] = [];
+        }
+
+        array_push($_SESSION['data'], $input);
     }
 
     public function ambilData()
     {
-        return $this->data;
+        return $_SESSION['data'] ?? [];
     }
 }
 

@@ -107,21 +107,13 @@ class DetailKamar extends Kamar
 
     <?php
     include 'data.php';
-    session_start();
-
-    if (!isset($_SESSION['form2'])) {
-        $_SESSION['form2'] = new FormBooking();
+    if (session_status() == PHP_SESSION_NONE) {
+        session_start();
     }
 
-    if ($_POST) {
-        $_SESSION['form2']->simpan(
-            $_POST['634_tipekamar'],
-            $_POST['634_jumlahkamar'],
-            $_POST['634_checkin'],
-            $_POST['634_checkout'],
-            $_POST['634_pembayaran']
-        );
-        echo "<p>Data booking kamar disimpan!</p>";
+    if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $form = new FormBooking();
+        $form->simpan($_POST['634_tipekamar'], $_POST['634_jumlahkamar'], $_POST['634_checkin'], $_POST['634_checkout'], $_POST['634_pembayaran']);
     }
     ?>
 
